@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+         xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="default">
+        <title>Pc List</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Pc</a>
+                </h3>
+                <h2>Product List</h2>
+                <div class="table-responsive">
+                    <table class="table" id="pc-table">
+                        <thead>
+                            <tr>
+                                <th>Pc Code</th>
+                                <th>Pc Ram</th>
+                                <th>Pc Hdd</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="pc : ${pcs}">
+                                <td th:text="${pc.pcCode}"></td>
+                                <td th:text="${pc.pcRam}"></td>
+                                <td th:text="${pc.pcHdd}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
