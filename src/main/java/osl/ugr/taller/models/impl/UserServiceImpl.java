@@ -5,10 +5,11 @@
 package osl.ugr.taller.models.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import osl.ugr.taller.models.dao.UserDAO;
 import osl.ugr.taller.models.entity.User;
 import osl.ugr.taller.models.service.IUserService;
+import osl.ugr.taller.models.dao.IUserDAO;
 
 /**
  *
@@ -19,12 +20,22 @@ import osl.ugr.taller.models.service.IUserService;
 public class UserServiceImpl implements IUserService{
     
     @Autowired
-    private UserDAO userDao;
+    private IUserDAO userDao;
+    
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public User finByUsername(String username) {
-        return userDao.finByUsername(username);
+        return userDao.findByUsername(username);
     }
+
+    @Override
+    public User logup(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userDao.save(user);
+    }
+    
     
     
 }

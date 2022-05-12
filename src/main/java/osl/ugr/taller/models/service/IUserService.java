@@ -13,4 +13,5 @@ import osl.ugr.taller.models.entity.User;
 public interface IUserService {
     
     public User finByUsername(String username);
+    public User logup(User user);
 }

@@ -24,7 +24,7 @@ public class PcController{
     @RequestMapping("/pc")
     public String pc(Model model) {
         model.addAttribute("pcs", pcRepository.findAll());
-        return "pc";
+        return "test";
     }
     
     

@@ -14,7 +14,7 @@ import osl.ugr.taller.models.entity.User;
  */
 
 @Repository
-public interface UserDAO extends JpaRepository<User, Long>{
+public interface IUserDAO extends JpaRepository<User, Long>{
     
-    public User finByUsername(String username);
+    public User findByUsername(String username);
 }
